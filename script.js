@@ -1,4 +1,4 @@
-const zoomLevels = {
+let currentZoom = {
   photo1: 1,
   photo2: 1
 };
@@ -13,27 +13,24 @@ function uploadImage(photoId) {
     if (file) {
       const reader = new FileReader();
       reader.onload = function(e) {
-        document.getElementById(photoId).src = e.target.result;
-        zoomLevels[photoId] = 1; // Reset zoom
-        document.getElementById(photoId).style.transform = "scale(1)";
+        const img = document.getElementById(photoId);
+        img.src = e.target.result;
+        currentZoom[photoId] = 1;
+        img.style.transform = "scale(1)";
       };
       reader.readAsDataURL(file);
     }
   };
 }
 
-function zoomIn(photoId) {
-  zoomLevels[photoId] += 0.1;
-  applyZoom(photoId);
-}
+function zoomImage(photoId, direction) {
+  if (direction === 'in') {
+    currentZoom[photoId] += 0.1;
+  } else if (direction === 'out') {
+    currentZoom[photoId] -= 0.1;
+    if (currentZoom[photoId] < 0.1) currentZoom[photoId] = 0.1; // Don't zoom out too much
+  }
 
-function zoomOut(photoId) {
-  zoomLevels[photoId] -= 0.1;
-  if (zoomLevels[photoId] < 0.1) zoomLevels[photoId] = 0.1; // prevent too small
-  applyZoom(photoId);
-}
-
-function applyZoom(photoId) {
   const img = document.getElementById(photoId);
-  img.style.transform = `scale(${zoomLevels[photoId]})`;
+  img.style.transform = `scale(${currentZoom[photoId]})`;
 }
