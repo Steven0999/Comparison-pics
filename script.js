@@ -14,7 +14,7 @@ function uploadImage(photoId) {
       const reader = new FileReader();
       reader.onload = function(e) {
         document.getElementById(photoId).src = e.target.result;
-        zoomLevels[photoId] = 1; // Reset zoom when new photo loaded
+        zoomLevels[photoId] = 1; // Reset zoom
         document.getElementById(photoId).style.transform = "scale(1)";
       };
       reader.readAsDataURL(file);
@@ -22,10 +22,18 @@ function uploadImage(photoId) {
   };
 }
 
-function zoom(photoId, factor) {
-  zoomLevels[photoId] += factor;
-  if (zoomLevels[photoId] < 0.1) zoomLevels[photoId] = 0.1; // minimum zoom
+function zoomIn(photoId) {
+  zoomLevels[photoId] += 0.1;
+  applyZoom(photoId);
+}
 
+function zoomOut(photoId) {
+  zoomLevels[photoId] -= 0.1;
+  if (zoomLevels[photoId] < 0.1) zoomLevels[photoId] = 0.1; // prevent too small
+  applyZoom(photoId);
+}
+
+function applyZoom(photoId) {
   const img = document.getElementById(photoId);
   img.style.transform = `scale(${zoomLevels[photoId]})`;
 }
