@@ -1,7 +1,7 @@
 function uploadImage(photoId) {
   const fileInput = document.getElementById('fileInput');
 
-  fileInput.click(); // Open file selector
+  fileInput.click();
 
   fileInput.onchange = function(event) {
     const file = event.target.files[0];
