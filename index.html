@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,16 +8,16 @@
 <body>
   <div class="collage">
     <div class="frame">
-      <img id="photo1" src="https://via.placeholder.com/400x400?text=Photo+1" alt="Photo 1">
-      <button onclick="uploadImage('photo1')">Change Photo 1</button>
+      <img id="photo1" src="https://via.placeholder.com/300x300?text=Photo+1" alt="Photo 1">
+      <button class="upload-btn" onclick="uploadImage('photo1')">Change Photo 1</button>
     </div>
     <div class="frame">
-      <img id="photo2" src="https://via.placeholder.com/400x400?text=Photo+2" alt="Photo 2">
-      <button onclick="uploadImage('photo2')">Change Photo 2</button>
+      <img id="photo2" src="https://via.placeholder.com/300x300?text=Photo+2" alt="Photo 2">
+      <button class="upload-btn" onclick="uploadImage('photo2')">Change Photo 2</button>
     </div>
   </div>
 
-  <!-- Hidden input for file selection -->
+  <!-- Hidden input -->
   <input type="file" id="fileInput" accept="image/*" style="display: none;">
 
   <script src="script.js"></script>
