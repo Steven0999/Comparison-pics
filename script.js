@@ -1,8 +1,16 @@
-// Example: You can add interactivity if you want
-document.getElementById('photo1').addEventListener('click', function() {
-  alert('You clicked Photo 1!');
-});
+function uploadImage(photoId) {
+  const fileInput = document.getElementById('fileInput');
 
-document.getElementById('photo2').addEventListener('click', function() {
-  alert('You clicked Photo 2!');
-});
+  fileInput.click(); // Open file selector
+
+  fileInput.onchange = function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById(photoId).src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+}
