@@ -1,4 +1,4 @@
-let currentZoom = {
+let zoomLevels = {
   photo1: 1,
   photo2: 1
 };
@@ -15,7 +15,7 @@ function uploadImage(photoId) {
       reader.onload = function(e) {
         const img = document.getElementById(photoId);
         img.src = e.target.result;
-        currentZoom[photoId] = 1;
+        zoomLevels[photoId] = 1;
         img.style.transform = "scale(1)";
       };
       reader.readAsDataURL(file);
@@ -23,14 +23,8 @@ function uploadImage(photoId) {
   };
 }
 
-function zoomImage(photoId, direction) {
-  if (direction === 'in') {
-    currentZoom[photoId] += 0.1;
-  } else if (direction === 'out') {
-    currentZoom[photoId] -= 0.1;
-    if (currentZoom[photoId] < 0.1) currentZoom[photoId] = 0.1; // Don't zoom out too much
-  }
-
+function zoom(photoId, factor) {
+  zoomLevels[photoId] *= factor;
   const img = document.getElementById(photoId);
-  img.style.transform = `scale(${currentZoom[photoId]})`;
+  img.style.transform = `scale(${zoomLevels[photoId]})`;
 }
