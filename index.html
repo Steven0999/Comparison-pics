@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Photo Collage Zoom</title>
+  <title>Photo Collage Zoom & Pan</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="collage">
     <div class="frame">
-      <div class="image-container">
+      <div class="image-container" id="container1">
         <img id="photo1" src="https://via.placeholder.com/600x600?text=Photo+1" alt="Photo 1">
       </div>
       <div class="button-group">
         <button onclick="uploadImage('photo1')">Change Photo 1</button>
-        <button onclick="zoom('photo1', 1.2)">🔍+</button>
-        <button onclick="zoom('photo1', 0.8)">🔍-</button>
+        <button onclick="zoom('photo1', 1.5)">🔍+</button>
+        <button onclick="zoom('photo1', 0.7)">🔍-</button>
       </div>
     </div>
 
     <div class="frame">
-      <div class="image-container">
+      <div class="image-container" id="container2">
         <img id="photo2" src="https://via.placeholder.com/600x600?text=Photo+2" alt="Photo 2">
       </div>
       <div class="button-group">
         <button onclick="uploadImage('photo2')">Change Photo 2</button>
-        <button onclick="zoom('photo2', 1.2)">🔍+</button>
-        <button onclick="zoom('photo2', 0.8)">🔍-</button>
+        <button onclick="zoom('photo2', 1.5)">🔍+</button>
+        <button onclick="zoom('photo2', 0.7)">🔍-</button>
       </div>
     </div>
   </div>
